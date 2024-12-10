@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login In</title>
+    <!--favicon-->
+    <link rel="icon" type="image/png" href="images/favicon.ico">
+
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <!--font-awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!--Css links-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!--style-->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin-top: 2rem;
+            background-image: url(images/background3.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+          
+            .center {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              padding: 10px;
+            }
+            
+        }
+        .login-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        
+        }
+        @media(max-width: 990px){
+          body{
+            background-size: auto;
+          }
+        }
+
+        @media (max-width: 576px) {
+            .login-container {
+                width: 90%; 
+            }
+        }
+        </style>
+</head>
+<body>
+    <!--navbar-->
+    <header class="header_wrapper">
+        <nav class="navbar navbar-expand-lg header-scrolled">
+            <div class="container">
+              <a class="navbar-brand" href="Home.html"><img src="images/logo 2.png" alt="logo" style="width: 150px;"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <!--<span class="navbar-toggler-icon"></span>-->
+                <i class="fas fa-stream"></i>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav menu-navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="Home.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="Home.html#about">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="Home.html#rooms">Rooms</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="roomDetails.html">Rooms Details</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="Booking.html">Booking</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="Home.html#contact">Contact Us</a>
+                  </li>
+                  <li class="nav-item mt-3 mt-lg-0">
+                    <a class="main-btn" href="signup.html">Sign In</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <!--login page-->
+    <div class="login-container mt-5 center" >
+        <h2 class="text-center">Login</h2>
+        <form>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 main-btn" onclick="checkLogin()">Login</button>
+        </form>
+        <div class="mt-3 text-center">
+            <a href="signup.html">Don't have an account? Sign Up</a>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script>
+      //  Some Predefined list of users with email and password
+      const users = [
+          { email: "user1@example.com", password: "123" },
+          { email: "user2@example.com", password: "456" },
+          { email: "payalgajbe@gmail.com", password: "789" }
+      ];
+  
+      // Function to check login credentials
+      function checkLogin(event) {
+          event.preventDefault(); // Prevent form submission
+  
+          const emailInput = document.getElementById('email').value;
+          const passwordInput = document.getElementById('password').value;
+  
+          // Check if the entered email and password match any user
+          const user = users.find(user => user.email === emailInput && user.password === passwordInput);
+  
+          if (user) {
+              // If credentials match, go to the home page
+              alert("Login successful! Redirecting to the home page.");
+              window.location.href = "Home.html";
+          } else {
+              // If credentials do not match, show an alert
+              alert("No matching account found. Please sign up.");
+              window.location.href = "signup.html";
+            }
+      }
+      document.querySelector("form").addEventListener("submit", checkLogin);
+  </script>
+  
+</body>
+</html>
